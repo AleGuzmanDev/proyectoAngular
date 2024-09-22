@@ -6,4 +6,6 @@ export class RegistroUsuarioDTO {
     telefono: string = "";
     email: string = "";
     password: string= "";
+    confirmaPassword: string = "";
+
 }

@@ -1,40 +1,69 @@
-<form>
-    <div>
-        <label>Cédula: </label>
-        <input type = "text" name = "cedula"/>
+<div class="container">
+    <header>
+      <a href="#" class="home-icon">
+        <i class="fas fa-home"></i> Inicio
+      </a>
+      <div class="logo">
+        <img src="path-to-your-logo.png" alt="Unieventos Logo">
+        <span>UNIEVENTOS</span>
+        <p>Creamos Experiencias</p>
+      </div>
+      <a href="#" class="user-icon">
+        <i class="fas fa-user"></i>
+      </a>
+    </header>
+  
+    <div class="content">
+      <nav class="sidebar">
+        <ul>
+          <li><a href="#">Eventos</a></li>
+          <li><a href="#">Quienes Somos</a></li>
+          <li><a href="#">Contáctanos</a></li>
+          <li><a href="#">Donde Estamos</a></li>
+          <li><a href="#">Síguenos</a></li>
+        </ul>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </nav>
+  
+      <main class="registration-form">
+        <h2>Registrarme con</h2>
+        <form #f="ngForm" (ngSubmit)="registrar()">
+          <div class="form-group">
+            <i class="fas fa-id-card"></i>
+            <input type="text" name="cedula" [(ngModel)]="registroUsuarioDTO.cedula" placeholder="Cédula" required>
+          </div>
+          <div class="form-group">
+            <i class="fas fa-user"></i>
+            <input type="text" name="nombre" [(ngModel)]="registroUsuarioDTO.nombre" placeholder="Nombre Completo" required>
+          </div>
+          <div class="form-group">
+            <i class="fas fa-map-marker-alt"></i>
+            <input type="text" name="direccion" [(ngModel)]="registroUsuarioDTO.direccion" placeholder="Dirección" required>
+          </div>
+          <div class="form-group">
+            <i class="fas fa-phone"></i>
+            <input type="tel" name="telefono" [(ngModel)]="registroUsuarioDTO.telefono" placeholder="Teléfono" required>
+          </div>
+          <div class="form-group">
+            <i class="fas fa-envelope"></i>
+            <input type="email" name="email" [(ngModel)]="registroUsuarioDTO.email" placeholder="Correo Electrónico" required>
+          </div>
+          <div class="form-group">
+            <i class="fas fa-lock"></i>
+            <input type="password" name="password" [(ngModel)]="registroUsuarioDTO.password" placeholder="Contraseña" required>
+          </div>
+          <div class="form-group">
+            <i class="fas fa-lock"></i>
+            <input type="password" name="confirmaPassword" [(ngModel)]="registroUsuarioDTO.confirmaPassword" placeholder="Repetir Contraseña" required>
+          </div>
+          <p *ngIf="!sonIguales()" class="password-mismatch">Las contraseñas no coinciden</p>
+          <button type="submit" [disabled]="f.invalid || !sonIguales()">Registrar Cuenta</button>
+          <p class="login-link">Ya tiene una cuenta? <a routerLink="/login">Iniciar Sesión</a></p>
+        </form>
+      </main>
     </div>
-
-    <div>
-        <label>Nombre Completo: </label>
-        <input type = "text" name = "nombre"/>
-    </div>
-
-    <div>
-        <label>Dirección: </label>
-        <input type = "text" name = "direccion"/>
-    </div>
-
-    <div>
-        <label>Teléfono: </label>
-        <input type = "text" name = "telefono"/>
-    </div>
-
-    <div>
-        <label>Correo Electrónico: </label>
-        <input type = "email" name = "email"/>
-    </div>
-
-    <div>
-        <label>Contraseña: </label>
-        <input type = "text" name = "password"/>
-    </div>
-
-    <button type="submit">Registrar cuenta</button>
-
-    <div>
-        <label>¿Ya tiene una cuenta? </label>
-        <a> [routerLink] = "[/rutaDestino]" <!--Ruta de destino que redirige a otra interfaz de la App-->
-        </a>
-    </div>
-
-</form>
+  </div>
