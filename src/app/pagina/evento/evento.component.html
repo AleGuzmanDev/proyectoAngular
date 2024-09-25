@@ -1,0 +1,112 @@
+<form (ngSubmit)="onSubmit()">
+    <div class="form-container">
+      <h2>Editar Evento</h2>
+  
+      <!-- Nombre -->
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" [(ngModel)]="eventoDTO.nombre" name="nombre" placeholder="Nombre Evento" required>
+        <div *ngIf="nombre.invalid && nombre.touched" class="error-message">
+          El nombre es requerido.
+        </div>
+      </div>
+  
+      <!-- Artista -->
+      <div class="form-group">
+        <label for="artista">Artista</label>
+        <div class="search-input">
+          <input type="text" id="artista" [(ngModel)]="eventoDTO.artistas" name="artista" placeholder="Nombre Artista" required>
+          <span class="search-icon">🔍</span>
+        </div>
+        <div *ngIf="artista.invalid && artista.touched" class="error-message">
+          El nombre del artista es requerido.
+        </div>
+      </div>
+  
+      <!-- Descripción -->
+      <div class="form-group">
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" [(ngModel)]="eventoDTO.descripcion" name="descripcion" placeholder="Breve descripción"></textarea>
+      </div>
+  
+      <!-- Fecha -->
+      <div class="form-group">
+        <label for="fecha">Fecha</label>
+        <input type="date" id="fecha" [(ngModel)]="eventoDTO.fecha" name="fecha" required>
+        <div *ngIf="fecha.invalid && fecha.touched" class="error-message">
+          La fecha es requerida.
+        </div>
+      </div>
+  
+      <!-- Dirección -->
+      <div class="form-group">
+        <label for="direccion">Dirección</label>
+        <input type="text" id="direccion" [(ngModel)]="eventoDTO.direccion" name="direccion" placeholder="Dirección" required>
+        <div *ngIf="direccion.invalid && direccion.touched" class="error-message">
+          La dirección es requerida.
+        </div>
+      </div>
+  
+      <!-- Ciudad -->
+      <div class="form-group">
+        <label for="ciudad">Ciudad</label>
+        <select id="ciudad" [(ngModel)]="eventoDTO.ciudad" name="ciudad" required>
+          <option value="">Seleccionar ciudad</option>
+          <!-- Añadir opciones aquí -->
+        </select>
+        <div *ngIf="ciudad.invalid && ciudad.touched" class="error-message">
+          La ciudad es requerida.
+        </div>
+      </div>
+  
+      <!-- Localidades -->
+      <div class="form-group">
+        <label>Localidades</label>
+        <div class="localidades-grid">
+          <div>VIP</div>
+          <div>General</div>
+          <div>Platea</div>
+          <div><input type="number" [(ngModel)]="eventoDTO.vip" name="vip" min="0"></div>
+          <div><input type="number" [(ngModel)]="eventoDTO.general" name="general" min="0"></div>
+          <div><input type="number" [(ngModel)]="eventoDTO.platea" name="platea" min="0"></div>
+        </div>
+      </div>
+  
+      <!-- Tipo de evento -->
+      <div class="form-group">
+        <label for="tipo">Tipo</label>
+        <select id="tipo" [(ngModel)]="eventoDTO.tipo" name="tipo" required>
+          <option value="">Tipo de evento</option>
+          <!-- Añadir opciones aquí -->
+        </select>
+        <div *ngIf="tipo.invalid && tipo.touched" class="error-message">
+          El tipo de evento es requerido.
+        </div>
+      </div>
+  
+      <!-- Imagenes -->
+      <div class="image-upload">
+        <div>
+          <label>Imagen Portada</label>
+          <div class="upload-box">
+            <span class="camera-icon">📷</span>
+            <button type="button">Subir Imagen</button>
+          </div>
+        </div>
+        <div>
+          <label>Subir Imagen</label>
+          <div class="upload-box">
+            <span class="camera-icon">📷</span>
+            <button type="button">Subir Imagen</button>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Botones de acción -->
+      <div class="form-actions">
+        <button type="button" class="btn-cancel">Cancelar</button>
+        <button type="submit" class="btn-edit">Editar</button>
+      </div>
+    </div>
+  </form>
+  

@@ -17,8 +17,9 @@ export class RegistroComponent {
   public registrar() {
     if (this.validarFormulario()) {
       console.log(this.registroUsuarioDTO);
+      console.log("Se enviará un correo a la dirección que registraste para que autentiques tu cuenta.")
       // Aquí iría la lógica para enviar los datos al servidor
-      // Por ejemplo: this.usuarioService.registrar(this.registroUsuarioDTO).subscribe(...)
+      // this.registroUsuarioDTO.registrar(this.registroUsuarioDTO);
     }
   }
 
