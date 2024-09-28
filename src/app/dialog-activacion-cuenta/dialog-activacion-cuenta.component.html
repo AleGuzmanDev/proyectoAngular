@@ -1,0 +1,11 @@
+<div class="dialog-container">
+    <h2>Registro de Usuario</h2>
+    <p>Hemos enviado a su correo un código de activación de cuenta, dispone de 15 minutos para poder activarla, de lo contrario deberá iniciar nuevamente con el proceso.</p>
+    <h3>Código de Activación</h3>
+    <mat-form-field appearance="outline">
+      <mat-label>Ingrese el código recibido por correo</mat-label>
+      <input matInput placeholder="Código de activación" [(ngModel)]="codigoActivacion">
+    </mat-form-field>
+    <p>Tiempo restante: {{tiempoRestante}}</p>
+    <button mat-raised-button color="primary" (click)="activarCuenta()">Activar Cuenta</button>
+  </div>

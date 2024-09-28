@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogContentComponent } from '../../dialog-content/dialog-content.component';
 import { RegistroUsuarioDTO } from '../../modelo/registro-usuario-dto';
+import { DialogActivacionCuentaComponent } from '../../dialog-activacion-cuenta/dialog-activacion-cuenta.component';
 
 @Component({
   selector: 'app-registro',
@@ -10,9 +13,15 @@ export class RegistroComponent {
   registroUsuarioDTO: RegistroUsuarioDTO;
   errorMessages: { [key: string]: string } = {};
 
-  constructor() {
+  constructor(public dialog: MatDialog) {
     this.registroUsuarioDTO = new RegistroUsuarioDTO();
   }
+
+  abrirDialogActivacionCuenta(): void {
+    this.dialog.open(DialogActivacionCuentaComponent, {width: '400px'});
+  }
+
+    
 
   public registrar() {
     if (this.validarFormulario()) {
