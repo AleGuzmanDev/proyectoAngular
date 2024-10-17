@@ -1,0 +1,95 @@
+<div class="container">
+    <header>
+      <div class="header-item">
+        <div class="home-icon">⌂</div>
+        <span>Inicio</span>
+      </div>
+      <div class="logo-container">
+        <div class="music-icon">♪</div>
+        <h1 class="logo">UNIEVENTOS</h1>
+        <span class="subtitle">Creamos Experiencias</span>
+      </div>
+      <div class="header-item">
+        <div class="user-icon">👤</div>
+        <span>Khal Drogo</span>
+      </div>
+    </header>
+  
+    <main>
+      <div class="profile-card">
+        <h2>Perfil de Usuario</h2>
+        
+        <div class="tabs">
+          <button 
+            class="tab-btn" 
+            [ngClass]="{'active': activeTab === 'datos'}"
+            (click)="setActiveTab('datos')">
+            Datos de Usuario
+          </button>
+          <button 
+            class="tab-btn" 
+            [ngClass]="{'active': activeTab === 'historial'}"
+            (click)="setActiveTab('historial')">
+            Historial de Compras
+          </button>
+          <button 
+            class="tab-btn" 
+            [ngClass]="{'active': activeTab === 'deseos'}"
+            (click)="setActiveTab('deseos')">
+            Lista de Deseos
+          </button>
+        </div>
+  
+        <div class="search-container">
+          <input 
+            type="text" 
+            placeholder="Buscar eventos..."
+            (input)="filterEvents($event)">
+          <div class="search-icon">🔍</div>
+        </div>
+  
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Evento</th>
+                <th>Fecha</th>
+                <th>Cantidad</th>
+                <th>Total</th>
+                <th>Estado</th>
+                <th>Cupones</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let purchase of filteredPurchases">
+                <td>{{ purchase.id }}</td>
+                <td>{{ purchase.event }}</td>
+                <td>{{ purchase.date }}</td>
+                <td>{{ purchase.quantity }}</td>
+                <td>${{ purchase.total | number }}</td>
+                <td>
+                  <span class="status" [ngClass]="getStatusColor(purchase.status)">
+                    {{ purchase.status }}
+                  </span>
+                </td>
+                <td>{{ purchase.coupon || '----------' }}</td>
+                <td><span class="eye-icon">👁️</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  
+        <div class="pagination">
+          <span class="results-count">
+            Mostrando {{ filteredPurchases.length }} de {{ purchases.length }} compras
+          </span>
+          <div class="pagination-buttons">
+            <button (click)="onPrevious()">◀ Anterior</button>
+            <button (click)="onNext()">Siguiente ▶</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>

@@ -16,6 +16,7 @@ import { EventoComponent } from './pagina/evento/evento.component';
 import { DialogContentComponent } from './dialog-content/dialog-content.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { DialogActivacionCuentaComponent } from './dialog-activacion-cuenta/dialog-activacion-cuenta.component';
+import { PerfilUsuarioComponent } from './pagina/perfil-usuario/perfil-usuario.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DialogActivacionCuentaComponent } from './dialog-activacion-cuenta/dial
     RegistroComponent,
     EventoComponent,
     DialogContentComponent,
-    DialogActivacionCuentaComponent
+    DialogActivacionCuentaComponent,
+    PerfilUsuarioComponent
   ],
 
   imports: [
