@@ -17,6 +17,13 @@ import { DialogContentComponent } from './dialog-content/dialog-content.componen
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { DialogActivacionCuentaComponent } from './dialog-activacion-cuenta/dialog-activacion-cuenta.component';
 import { PerfilUsuarioComponent } from './pagina/perfil-usuario/perfil-usuario.component';
+import { DatosPerfilUsuarioComponent } from './pagina/datos-perfil-usuario/datos-perfil-usuario.component';
+import { ListaDeseosComponent } from './pagina/lista-deseos/lista-deseos.component';
+import { AdmonAdministradorComponent } from './pagina/admon-administrador/admon-administrador.component';
+import { AdmonCuponesComponent } from './pagina/admon-cupones/admon-cupones.component';
+import { AdmonEventosComponent } from './pagina/admon-eventos/admon-eventos.component';
+import { AdmonArtistasComponent } from './pagina/admon-artistas/admon-artistas.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,7 +34,13 @@ import { PerfilUsuarioComponent } from './pagina/perfil-usuario/perfil-usuario.c
     EventoComponent,
     DialogContentComponent,
     DialogActivacionCuentaComponent,
-    PerfilUsuarioComponent
+    PerfilUsuarioComponent,
+    DatosPerfilUsuarioComponent,
+    ListaDeseosComponent,
+    AdmonAdministradorComponent,
+    AdmonCuponesComponent,
+    AdmonEventosComponent,
+    AdmonArtistasComponent
   ],
 
   imports: [
@@ -38,7 +51,8 @@ import { PerfilUsuarioComponent } from './pagina/perfil-usuario/perfil-usuario.c
     MatInputModule,
     MatButtonModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
 
   providers: [

@@ -1,0 +1,124 @@
+<div class="main-content">
+    <h2 class="text-center mb-4">Perfil de Usuario</h2>
+    
+    <!-- Tabs -->
+    <ul class="nav nav-tabs justify-content-center mb-4">
+        <li class="nav-item">
+            <a class="nav-link active" href="#">Datos de Usuario</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Historial de Compras</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Lista de Deseos</a>
+        </li>
+    </ul>
+
+    <!-- User Form -->
+    <div class="form-container">
+        <p class="text-muted mb-4">Actualiza tu información personal y contraseña</p>
+        <form [formGroup]="userProfileForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="mb-3">
+                        <label for="cedula" class="form-label">Cedula</label>
+                        <input type="text" 
+                               class="form-control" 
+                               id="cedula" 
+                               formControlName="cedula"
+                               [class.is-invalid]="cedulaControl?.invalid && cedulaControl?.touched">
+                        <div class="invalid-feedback" *ngIf="cedulaControl?.errors?.['required']">
+                            La cédula es requerida
+                        </div>
+                        <div class="invalid-feedback" *ngIf="cedulaControl?.errors?.['pattern']">
+                            La cédula solo debe contener números
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre completo</label>
+                        <input type="text" 
+                               class="form-control" 
+                               id="nombre" 
+                               formControlName="nombre"
+                               [class.is-invalid]="nombreControl?.invalid && nombreControl?.touched">
+                        <div class="invalid-feedback" *ngIf="nombreControl?.errors?.['required']">
+                            El nombre es requerido
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="direccion" class="form-label">Dirección</label>
+                        <input type="text" 
+                               class="form-control" 
+                               id="direccion" 
+                               formControlName="direccion"
+                               [class.is-invalid]="direccionControl?.invalid && direccionControl?.touched">
+                        <div class="invalid-feedback" *ngIf="direccionControl?.errors?.['required']">
+                            La dirección es requerida
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="telefono" class="form-label">Teléfono</label>
+                        <input type="text" 
+                               class="form-control" 
+                               id="telefono" 
+                               formControlName="telefono"
+                               [class.is-invalid]="telefonoControl?.invalid && telefonoControl?.touched">
+                        <div class="invalid-feedback" *ngIf="telefonoControl?.errors?.['required']">
+                            El teléfono es requerido
+                        </div>
+                        <div class="invalid-feedback" *ngIf="telefonoControl?.errors?.['pattern']">
+                            El teléfono solo debe contener números
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Correo electrónico</label>
+                        <input type="email" 
+                               class="form-control" 
+                               id="email" 
+                               formControlName="email"
+                               [class.is-invalid]="emailControl?.invalid && emailControl?.touched">
+                        <div class="invalid-feedback" *ngIf="emailControl?.errors?.['required']">
+                            El correo electrónico es requerido
+                        </div>
+                        <div class="invalid-feedback" *ngIf="emailControl?.errors?.['email']">
+                            Ingrese un correo electrónico válido
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Nueva Contraseña</label>
+                        <input type="password" 
+                               class="form-control" 
+                               id="password" 
+                               formControlName="password">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="confirmPassword" class="form-label">Confirmar Nueva contraseña</label>
+                        <input type="password" 
+                               class="form-control" 
+                               id="confirmPassword" 
+                               formControlName="confirmPassword">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="d-grid gap-3">
+                        <button type="button" class="btn btn-dark" (click)="toggleEditMode()">
+                            {{ isEditMode ? 'Cancelar edición' : 'Editar perfil' }}
+                        </button>
+                        <button type="button" class="btn btn-dark" (click)="deleteProfile()">
+                            Eliminar perfil
+                        </button>
+                        <button type="submit" class="btn btn-dark" [disabled]="!isEditMode || !userProfileForm.valid">
+                            Guardar cambios
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

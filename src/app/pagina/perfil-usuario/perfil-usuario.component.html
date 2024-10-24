@@ -21,11 +21,14 @@
         
         <div class="tabs">
           <button 
+            id="datosPerfilUsuario" 
             class="tab-btn" 
             [ngClass]="{'active': activeTab === 'datos'}"
-            (click)="setActiveTab('datos')">
+            [routerLink]="['/datosPerfilUsuario']">
+            <!--(click)="setActiveTab('datos')">-->
+            
             Datos de Usuario
-          </button>
+          </button> 
           <button 
             class="tab-btn" 
             [ngClass]="{'active': activeTab === 'historial'}"
