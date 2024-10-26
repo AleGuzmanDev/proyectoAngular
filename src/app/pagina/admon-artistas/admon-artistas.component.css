@@ -1,0 +1,87 @@
+.admon-artistas-container {
+    background-color: #f9f9f9;
+    border: 2px solid #8bc34a;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  .nav-tabs .nav-item .nav-link {
+    border-radius: 10px 10px 0 0;
+    background-color: #e0f0e9;
+    border: 2px solid #8bc34a;
+    padding: 10px 20px;
+    margin-right: 5px;
+    font-weight: bold;
+    color: #000;
+  }
+  
+  .nav-tabs .nav-item .nav-link.active {
+    background-color: #ffffff;
+    border-bottom: 2px solid #8bc34a;
+  }
+  
+  .artista-section {
+    background-color: #ffffff;
+    border: 2px solid #8bc34a;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  .btn-dark {
+    background-color: #333;
+    color: white;
+    border-radius: 20px;
+    font-weight: bold;
+    padding: 10px 20px;
+  }
+  
+  .search-bar {
+    margin-bottom: 20px;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    border: 2px solid #ccc;
+  }
+  
+  .table th, .table td {
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  .badge {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+  }
+  
+  .badge-available {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .badge-busy {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .action-icon {
+    font-size: 1.2em;
+    margin: 0 5px;
+    cursor: pointer;
+    color: #555;
+  }
+  
+  .action-icon:hover {
+    color: #333;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+  

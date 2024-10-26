@@ -1,1 +1,70 @@
-<p>admon-artistas works!</p>
+<div class="container mt-4 admon-artistas-container">
+    <h2 class="text-center mb-4">Administración</h2>
+  
+    <!-- Tabs -->
+    <ul class="nav nav-tabs justify-content-center mb-4">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Datos de Administrador</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Administración de Cupones</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Administración de Eventos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Administración de Artistas</a>
+      </li>
+    </ul>
+  
+    <!-- Sección de Gestión de Artistas -->
+    <div class="artista-section">
+      <button class="btn btn-dark mb-3" (click)="addArtist()">+ Añadir nuevo Artista</button>
+      <p class="text-muted">Gestiona los Artistas en UNIEVENTOS</p>
+  
+      <!-- Buscar Artista -->
+      <div class="search-bar mb-3">
+        <input type="text" placeholder="Buscar artista..." [(ngModel)]="searchQuery" (input)="filterArtists()" class="search-input">
+      </div>
+  
+      <!-- Tabla de Artistas -->
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Género</th>
+            <th>Estado</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let artist of filteredArtists">
+            <td>{{ artist.name }}</td>
+            <td>{{ artist.genre }}</td>
+            <td>
+              <span class="badge" [ngClass]="{'badge-available': artist.status === 'Disponible', 'badge-busy': artist.status === 'Ocupado'}">
+                {{ artist.status }}
+              </span>
+            </td>
+            <td><a href="mailto:{{ artist.email }}">{{ artist.email }}</a></td>
+            <td>{{ artist.phone }}</td>
+            <td>
+              <i class="fa fa-edit action-icon" (click)="editArtist(artist)"></i>
+              <i class="fa fa-trash action-icon" (click)="deleteArtist(artist)"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  
+      <!-- Paginación -->
+      <div class="pagination mt-3">
+        <span>Mostrando 1-5 de {{ totalArtists }} artistas</span>
+        <button class="btn btn-secondary" (click)="prevPage()" [disabled]="currentPage === 1">Anterior</button>
+        <button class="btn btn-secondary" (click)="nextPage()" [disabled]="currentPage >= totalPages">Siguiente</button>
+      </div>
+    </div>
+  </div>
+  
+  

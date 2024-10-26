@@ -1,0 +1,63 @@
+.admon-container {
+    background-color: #f9f9f9;
+    border: 2px solid #8bc34a;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  .nav-tabs .nav-item .nav-link {
+    border-radius: 10px 10px 0 0;
+    background-color: #e0f0e9;
+    border: 2px solid #8bc34a;
+    padding: 10px 20px;
+    margin-right: 5px;
+    font-weight: bold;
+    color: #000;
+  }
+  
+  .nav-tabs .nav-item .nav-link.active {
+    background-color: #ffffff;
+    border-bottom: 2px solid #8bc34a;
+  }
+  
+  .form-container {
+    background-color: #ffffff;
+    border: 2px solid #8bc34a;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  .form-label {
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .form-control {
+    border: 2px solid #8bc34a;
+    border-radius: 5px;
+  }
+  
+  .edit-icon {
+    top: 35px;
+    right: 10px;
+    color: #8bc34a;
+    cursor: pointer;
+  }
+  
+  .d-grid {
+    margin-top: 20px;
+  }
+  
+  .btn-dark {
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-weight: bold;
+    background-color: #333;
+    color: white;
+  }
+  
+  .text-muted {
+    font-size: 0.9em;
+    color: #666;
+  }
+  
