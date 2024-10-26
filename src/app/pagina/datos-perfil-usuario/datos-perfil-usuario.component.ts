@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 // Interfaz para el perfil de usuario
 interface UserProfile {
@@ -9,7 +11,10 @@ interface UserProfile {
     telefono: string;
     email: string;
     password?: string;
+    
 }
+
+
 
 @Component({
     selector: 'app-datos-perfil-usuario',
@@ -17,8 +22,14 @@ interface UserProfile {
     styleUrls: ['./datos-perfil-usuario.component.css']
 })
 export class DatosPerfilUsuarioComponent implements OnInit {
+[x: string]: any;
     userProfileForm: FormGroup;
     isEditMode: boolean = false;
+    currentUrl: string = ''; 
+    activeTab: string = 'datos'; 
+   // activeTab: string = 'historial'; 
+
+    
     
     currentProfile: UserProfile = {
         cedula: '12345874',
@@ -28,7 +39,7 @@ export class DatosPerfilUsuarioComponent implements OnInit {
         email: 'khaldrogo@email.com'
     };
 
-    constructor(private fb: FormBuilder) {
+    constructor(private fb: FormBuilder, private Router: Router) {
         this.userProfileForm = this.fb.group({
             cedula: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
             nombre: ['', [Validators.required]],
@@ -37,12 +48,24 @@ export class DatosPerfilUsuarioComponent implements OnInit {
             email: ['', [Validators.required, Validators.email]],
             password: [''],
             confirmPassword: ['']
+            
         });
     }
 
+    
+
     ngOnInit(): void {
         this.loadCurrentProfile();
+        this.currentUrl = this.Router.url;
+        this.activeTab = this.currentUrl.includes('historialCompras') ? 'historial' :
+                     this.currentUrl.includes('listaDeseos') ? 'deseos' : 'datos';
+        
+
     }
+
+    setActiveTab(tab: string): void {
+        this.activeTab = tab;
+      }
 
     loadCurrentProfile(): void {
         this.userProfileForm.patchValue({

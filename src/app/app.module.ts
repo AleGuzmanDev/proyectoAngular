@@ -39,7 +39,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     ListaDeseosComponent,
     AdmonAdministradorComponent,
     AdmonCuponesComponent,
-    AdmonEventosComponent,
     AdmonArtistasComponent
   ],
 

@@ -1,1 +1,45 @@
-<p>lista-deseos works!</p>
+<div class="wishlist-container">
+    <h2 class="text-center mb-4">Revisa tus listas de deseos</h2>
+  
+    <!-- Buscar Eventos -->
+    <div class="search-bar">
+      <input type="text" placeholder="Buscar eventos..." [(ngModel)]="searchQuery" (input)="filterEvents()" class="search-input">
+    </div>
+  
+    <!-- Tabla de Lista de Deseos -->
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Evento</th>
+          <th>Fecha</th>
+          <th>Ver</th>
+          <th>Estado Evento</th>
+          <th>Notificar por Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let event of filteredEvents">
+          <td>{{ event.id }}</td>
+          <td>{{ event.name }}</td>
+          <td>{{ event.date }}</td>
+          <td><i class="fa fa-eye view-icon" (click)="viewEvent(event)"></i></td>
+          <td><span class="badge" [ngClass]="{'badge-pending': event.status === 'Pendiente'}">{{ event.status }}</span></td>
+          <td>
+            <label class="switch">
+              <input type="checkbox" [(ngModel)]="event.notify" (change)="toggleNotification(event)">
+              <span class="slider round"></span>
+            </label>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Paginación -->
+    <div class="pagination">
+      <button class="btn btn-secondary" (click)="prevPage()" [disabled]="currentPage === 1">Anterior</button>
+      <span>Mostrando {{ startItem }}-{{ endItem }} de {{ totalItems }} listas de Deseos</span>
+      <button class="btn btn-secondary" (click)="nextPage()" [disabled]="endItem >= totalItems">Siguiente</button>
+    </div>
+  </div>
+  

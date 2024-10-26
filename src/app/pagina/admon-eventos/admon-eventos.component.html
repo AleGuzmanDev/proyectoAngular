@@ -1,1 +1,68 @@
-<p>admon-eventos works!</p>
+<div class="admin-container">
+    <nav class="admin-nav">
+      <button class="nav-btn">Datos de Administrador</button>
+      <button class="nav-btn">Administración de Cupones</button>
+      <button class="nav-btn active">Administración de Eventos</button>
+      <button class="nav-btn">Administración de Artistas</button>
+    </nav>
+  
+    <div class="content-section">
+      <h2>Gestiona los eventos de UNIEVENTOS</h2>
+      
+      <button class="create-btn" routerLink="/crear-evento">
+        + Crear Nuevo Evento
+      </button>
+  
+      <div class="search-bar">
+        <input type="text" placeholder="Buscar eventos...">
+      </div>
+  
+      <table class="events-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Fecha</th>
+            <th>Ubicación</th>
+            <th>Precio</th>
+            <th>Capacidad</th>
+            <th>Tipo</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (evento of eventos; track $index) {
+            <tr>
+              <td>{{evento.nombre}}</td>
+              <td>{{evento.fecha}}</td>
+              <td>{{evento.ubicacion}}</td>
+              <td>${{evento.precio}}</td>
+              <td>{{evento.capacidad}}</td>
+              <td>{{evento.tipo}}</td>
+              <td>
+                <span class="status-badge {{evento.estado.toLowerCase()}}">
+                  {{evento.estado}}
+                </span>
+              </td>
+              <td class="actions">
+                <button class="action-btn edit">
+                  <img src="assets/icons/edit.png" alt="Editar">
+                </button>
+                <button class="action-btn delete">
+                  <img src="assets/icons/delete.png" alt="Eliminar">
+                </button>
+                <button class="action-btn view">
+                  <img src="assets/icons/view.png" alt="Ver">
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+  
+      <div class="pagination">
+        <button class="pagination-btn">Anterior</button>
+        <button class="pagination-btn">Siguiente</button>
+      </div>
+    </div>
+  </div>
