@@ -24,6 +24,7 @@ import { AdmonCuponesComponent } from './pagina/admon-cupones/admon-cupones.comp
 import { AdmonEventosComponent } from './pagina/admon-eventos/admon-eventos.component';
 import { AdmonArtistasComponent } from './pagina/admon-artistas/admon-artistas.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ComprasComponent } from './pagina/compras/compras.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ListaDeseosComponent,
     AdmonAdministradorComponent,
     AdmonCuponesComponent,
-    AdmonArtistasComponent
+    AdmonArtistasComponent,
+    ComprasComponent
   ],
 
   imports: [

@@ -11,6 +11,7 @@ import {AdmonEventosComponent} from './pagina/admon-eventos/admon-eventos.compon
 import {AdmonCuponesComponent} from './pagina/admon-cupones/admon-cupones.component';
 import { AdmonArtistasComponent } from './pagina/admon-artistas/admon-artistas.component';
 import { ListaDeseosComponent } from './pagina/lista-deseos/lista-deseos.component';
+import { ComprasComponent } from './pagina/compras/compras.component';
 
 const routes: Routes = [
   { path: "", component: InicioComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: "admonCupones", component: AdmonCuponesComponent},
   { path: "admonArtistas", component: AdmonArtistasComponent},
   { path: "listaDeseos", component: ListaDeseosComponent},
+  { path: "compras", component: ComprasComponent},
   { path: "**", pathMatch: "full", redirectTo: "" }
 ];
 
