@@ -70,13 +70,9 @@
                   <span>Subtotal:</span>
                   <span>{{ getSubtotal() | currency: 'COP' }}</span>
                 </div>
-                <div *ngIf="discount > 0" class="d-flex justify-content-between mb-2 text-success">
-                  <span>Descuento:</span>
+                <div *ngIf="isDiscountActive()" class="d-flex justify-content-between mb-2 text-success">
+                  <span>Descuento (20%):</span>
                   <span>-{{ getDiscountAmount() | currency: 'COP' }}</span>
-                </div>
-                <div *ngIf="isFirstPurchase" class="d-flex justify-content-between mb-2 text-success">
-                  <span>Descuento primera compra:</span>
-                  <span>-{{ getFirstPurchaseDiscount() | currency: 'COP' }}</span>
                 </div>
                 <div class="d-flex justify-content-between fw-bold">
                   <span>Total:</span>
@@ -136,6 +132,9 @@
           <div class="mb-3">
             <label for="cardNumber" class="form-label">Número de tarjeta</label>
             <input id="cardNumber" type="text" formControlName="cardNumber" class="form-control">
+            <div *ngIf="cardNumberError" class="payment-error">
+              El número de tarjeta debe tener 16 dígitos.
+            </div>
           </div>
           <div class="row">
             <div class="col">
@@ -170,8 +169,6 @@
         <p>Cantidad: {{ bookingForm.get('quantity')?.value }}</p>
         <p>Precio Unitario: {{ getLocationPrice(bookingForm.get('location')?.value) }}</p>
         <p>Descuento: -{{ getDiscountAmount() | currency: 'COP' }}</p>
-        <p>Cupón Aplicado: {{ bookingForm.get('promoCode')?.value || 'N/A' }}</p>
-        
         <p><strong>Total:</strong> {{ calculateTotal() | currency: 'COP' }}</p>
         <p>Método de pago: {{ selectedPaymentMethod }}</p>
         
@@ -181,6 +178,23 @@
           <input type="text" formControlName="verificationCode" class="form-control" placeholder="Ingresar código">
           <button class="btn btn-primary" (click)="confirmVerification()">Confirmar</button>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de Éxito -->
+<div *ngIf="showSuccessModal" class="modal fade show" tabindex="-1" style="display: block; background: rgba(0, 0, 0, 0.5);">
+  <div class="modal-dialog">
+    <div class="modal-content success-modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Su Pago ha sido Exitoso!!!</h5>
+        <button type="button" class="btn-close" (click)="closeSuccessModal()"></button>
+      </div>
+      <div class="modal-body">
+        <p>Por realizar la compra te aplicamos un descuento del 20%.</p>
+        <p class="text-muted">Por favor revisa tu correo electrónico para más detalles.</p>
+        <button class="btn btn-dark" (click)="closeSuccessModal()">Salir</button>
       </div>
     </div>
   </div>

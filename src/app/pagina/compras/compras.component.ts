@@ -27,10 +27,12 @@ export class ComprasComponent {
 
   showPaymentModal: boolean = false;
   showVerificationModal: boolean = false;
-  discount: number = 0;
-  isFirstPurchase: boolean = true;
+  showSuccessModal: boolean = false;
+  discountRate: number = 0; // Inicialmente sin descuento
   selectedPaymentMethod: string = ''; 
   cartItems: any[] = [];
+  verificationError: boolean = false; 
+  cardNumberError: boolean = false; 
 
   selectedEvent: Event = {
     id: 1,
@@ -39,7 +41,7 @@ export class ComprasComponent {
     description: 'La Mejor Banda de Rock de la Región',
     location: 'Salón de Eventos Norte',
     date: '15 de Septiembre de 2024',
-    image: '/img/event-image.jpg' // Ruta absoluta para asegurar carga
+    image: '/img/event-image.jpg'
   };
 
   locations: LocationPrices = {
@@ -79,9 +81,8 @@ export class ComprasComponent {
 
   calculateTotal(): number {
     const subtotal = this.getSubtotal();
-    const discountAmount = subtotal * this.discount;
-    const firstPurchaseDiscount = this.isFirstPurchase ? subtotal * 0.15 : 0;
-    return subtotal - discountAmount - firstPurchaseDiscount;
+    const discountAmount = subtotal * this.discountRate;
+    return subtotal - discountAmount;
   }
 
   updateQuantity(change: number): void {
@@ -92,11 +93,8 @@ export class ComprasComponent {
 
   applyPromoCode(): void {
     const promoCode = this.bookingForm.get('promoCode')?.value;
-    if (promoCode === 'CURA2024') {
-      this.discount = 0.20;
-    } else {
-      this.discount = 0;
-    }
+    this.discountRate = 0.20; // Aplica el 20% de descuento
+    alert("Código de descuento aplicado correctamente.");
   }
 
   addToCart(): void {
@@ -123,14 +121,17 @@ export class ComprasComponent {
   }
 
   isPaymentFormValid(): boolean {
-    return this.paymentForm.valid && this.selectedPaymentMethod !== '';
+    const cardNumber = this.paymentForm.get('cardNumber')?.value;
+    this.cardNumberError = cardNumber?.length !== 16;
+    return this.paymentForm.valid && this.selectedPaymentMethod !== '' && !this.cardNumberError;
   }
 
   verifyPurchase(): void {
     if (this.isPaymentFormValid()) {
       this.showPaymentModal = false;
       this.showVerificationModal = true;
-      console.log("Modal de verificación activado"); // Diagnóstico
+    } else {
+      alert("Por favor completa todos los campos correctamente.");
     }
   }
 
@@ -138,20 +139,22 @@ export class ComprasComponent {
     this.showPaymentModal = false;
     this.paymentForm.reset();
     this.selectedPaymentMethod = '';
+    this.cardNumberError = false;
   }
 
   closeVerificationModal(): void {
     this.showVerificationModal = false;
     this.verificationForm.reset();
+    this.verificationError = false;
   }
 
   confirmVerification(): void {
-    if (this.verificationForm.valid) {
-      alert("Compra confirmada con éxito");
-      this.closeVerificationModal();
-    } else {
-      alert("Por favor, ingrese el código de verificación");
-    }
+    this.showVerificationModal = false;
+    this.showSuccessModal = true;
+  }
+
+  closeSuccessModal(): void {
+    this.showSuccessModal = false;
   }
 
   getLocationOptions(): string[] {
@@ -167,12 +170,10 @@ export class ComprasComponent {
 
   getDiscountAmount(): number {
     const subtotal = this.getSubtotal();
-    return subtotal * this.discount;
+    return subtotal * this.discountRate;
   }
 
-  getFirstPurchaseDiscount(): number {
-    if (!this.isFirstPurchase) return 0;
-    const subtotal = this.getSubtotal();
-    return subtotal * 0.15;
+  isDiscountActive(): boolean {
+    return this.discountRate > 0;
   }
 }
