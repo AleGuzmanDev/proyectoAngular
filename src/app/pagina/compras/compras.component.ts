@@ -29,7 +29,8 @@ export class ComprasComponent {
   showVerificationModal: boolean = false;
   discount: number = 0;
   isFirstPurchase: boolean = true;
-  selectedPaymentMethod: string = ''; // Método de pago seleccionado
+  selectedPaymentMethod: string = ''; 
+  cartItems: any[] = [];
 
   selectedEvent: Event = {
     id: 1,
@@ -38,7 +39,7 @@ export class ComprasComponent {
     description: 'La Mejor Banda de Rock de la Región',
     location: 'Salón de Eventos Norte',
     date: '15 de Septiembre de 2024',
-    image: '/assets/images/event-image.jpg'
+    image: '/img/event-image.jpg' // Ruta absoluta para asegurar carga
   };
 
   locations: LocationPrices = {
@@ -98,20 +99,38 @@ export class ComprasComponent {
     }
   }
 
-  // Seleccionar método de pago
-  selectPaymentMethod(method: string): void {
-    this.selectedPaymentMethod = method;
-    this.paymentForm.updateValueAndValidity(); // Refuerza la validación al seleccionar el método
+  addToCart(): void {
+    const item = {
+      event: this.selectedEvent,
+      location: this.bookingForm.get('location')?.value,
+      quantity: this.bookingForm.get('quantity')?.value,
+      subtotal: this.getSubtotal()
+    };
+    this.cartItems.push(item);
+    alert('Añadido al carrito');
   }
 
-  // Validar si el formulario de pago es válido y se seleccionó un método de pago
+  openPaymentModal(): void {
+    if (this.cartItems.length > 0) {
+      this.showPaymentModal = true;
+    } else {
+      alert('Agrega productos al carrito antes de generar la orden de compra');
+    }
+  }
+
+  selectPaymentMethod(method: string): void {
+    this.selectedPaymentMethod = method;
+  }
+
   isPaymentFormValid(): boolean {
     return this.paymentForm.valid && this.selectedPaymentMethod !== '';
   }
 
-  openPaymentModal(): void {
-    if (this.bookingForm.valid) {
-      this.showPaymentModal = true;
+  verifyPurchase(): void {
+    if (this.isPaymentFormValid()) {
+      this.showPaymentModal = false;
+      this.showVerificationModal = true;
+      console.log("Modal de verificación activado"); // Diagnóstico
     }
   }
 
@@ -121,17 +140,18 @@ export class ComprasComponent {
     this.selectedPaymentMethod = '';
   }
 
-  verifyPurchase(): void {
-    if (this.isPaymentFormValid()) {
-      this.showPaymentModal = false;
-      this.showVerificationModal = true;
-      console.log("Pago exitoso");
-    }
-  }
-
   closeVerificationModal(): void {
     this.showVerificationModal = false;
     this.verificationForm.reset();
+  }
+
+  confirmVerification(): void {
+    if (this.verificationForm.valid) {
+      alert("Compra confirmada con éxito");
+      this.closeVerificationModal();
+    } else {
+      alert("Por favor, ingrese el código de verificación");
+    }
   }
 
   getLocationOptions(): string[] {

@@ -1,183 +1,36 @@
-/* Estilo para la tarjeta principal */
-.container {
-  max-width: 1200px;
-  margin: auto;
-}
-
-/* Personalización de la cabecera */
-.card-header h2 {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #333;
-}
-
-/* Estilos para las secciones */
-.event-details img {
-  max-width: 100%;
-  height: auto;
-}
-
-.event-details h3 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #333;
-}
-
-.event-details p {
-  font-size: 1rem;
-  color: #666;
-}
-
-.event-details label {
-  font-weight: bold;
-}
-
-.card {
-  border-radius: 10px;
-  border: 1px solid #ddd;
-}
-
-.card-header {
-  background-color: #f8f9fa;
-  border-bottom: 1px solid #ddd;
-  font-weight: bold;
-}
-
-.card-body {
-  padding: 1.5rem;
-}
-
-/* Distribución de localidades */
-.seating-chart img {
-  max-width: 100%;
-  border-radius: 8px;
-}
-
-.table-bordered th, .table-bordered td {
-  border: 1px solid #ddd;
-}
-
-.table th, .table td {
-  vertical-align: middle;
-}
-
-.table th {
-  font-weight: bold;
-  color: #333;
-}
-
-.table td {
-  color: #666;
-}
-
-/* Carrito de Compras */
-.carrito-compras .card-header {
-  font-size: 1.5rem;
-  color: #333;
-}
-
-.d-flex {
-  display: flex;
-}
-
-.justify-content-between {
-  justify-content: space-between;
-}
-
-.fw-bold {
-  font-weight: bold;
-}
-
-/* Botón Generar Orden de Compra */
-.btn-success {
-  background-color: #28a745;
-  color: #fff;
-  border: none;
-}
-
-.btn-success:hover {
-  background-color: #218838;
-}
-
-/* Botón Añadir al Carrito */
-.btn-dark {
-  background-color: #343a40;
-  color: #fff;
-  border: none;
-}
-
-.btn-dark:hover {
-  background-color: #23272b;
-}
-
-/* Modal */
-.modal {
-  background-color: rgba(0, 0, 0, 0.5);
+.modal.fade.show {
+  display: block !important;
+  opacity: 1 !important;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .modal-dialog {
   max-width: 500px;
 }
 
-.modal-content {
-  border-radius: 10px;
+.modal-header .btn-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
 }
 
-.modal-header {
-  border-bottom: 1px solid #ddd;
+.modal-body {
+  padding: 1.5rem;
 }
 
 .modal-title {
-  font-size: 1.5rem;
   font-weight: bold;
 }
 
-.btn-close {
-  border: none;
-  background: transparent;
-  font-size: 1.2rem;
+.modal-body p {
+  margin-bottom: 1rem;
 }
 
-/* Iconos de método de pago */
-.img-thumbnail {
-  border: 2px solid transparent;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: border 0.3s ease;
-}
-
-.img-thumbnail.selected {
-  border: 2px solid #007bff;
-}
-
-/* Input de formulario */
-.form-label {
-  font-weight: bold;
-}
-
-.form-control {
+.input-group .form-control {
   border-radius: 5px;
 }
 
-/* Botón Pagar */
-.btn-primary {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-}
-
-.btn-primary:hover {
-  background-color: #0056b3;
-}
-
-.btn-primary:disabled {
-  background-color: #6c757d;
-  cursor: not-allowed;
-}
-
-/* Ajustes de responsive */
-@media (max-width: 768px) {
-  .col-md-4 {
-    margin-bottom: 1.5rem;
-  }
+.input-group .btn {
+  font-weight: bold;
+  border-radius: 5px;
 }
